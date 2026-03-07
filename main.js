@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
         timestamp: new Date().toISOString()
       };
 
-      fetch('https://tasri-backend.onrender.com/api/orders', {
+      fetch('/api/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // API Lookup
-      fetch(`https://tasri-backend.onrender.com/api/orders/${input}`)
+      fetch(`/api/orders/${input}`)
         .then(response => {
           if (!response.ok) throw new Error('Order not found');
           return response.json();

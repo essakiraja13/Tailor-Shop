@@ -13,11 +13,15 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(compression());
 app.use(cors());
 app.use(bodyParser.json());
+
+// Serve Static Frontend Files (Vite Build)
+const distPath = path.join(__dirname, '../dist');
+app.use(express.static(distPath));
 
 // Helper for DB Queries (Promisified)
 const dbAll = (sql, params = []) => {
@@ -48,9 +52,6 @@ const dbRun = (sql, params = []) => {
 };
 
 // API Routes
-app.get('/', (req, res) => {
-    res.send('Tasri Vinayaga Tailors API is running smoothly!');
-});
 app.get('/api/orders', async (req, res) => {
     try {
         const rows = await dbAll('SELECT * FROM orders');
