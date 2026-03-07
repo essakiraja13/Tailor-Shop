@@ -140,7 +140,7 @@ app.post('/api/orders/:id/remind', async (req, res) => {
 });
 
 // Seed Initial Data if Empty
-(async () => {
+setTimeout(async () => {
     try {
         const row = await dbGet('SELECT count(*) as count FROM orders');
         if (row.count === 0) {
@@ -173,7 +173,7 @@ app.post('/api/orders/:id/remind', async (req, res) => {
     } catch (err) {
         console.error('Seeding error:', err);
     }
-})();
+}, 1000);
 
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
