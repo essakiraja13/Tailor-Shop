@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Selvi Couture House</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <i class="fas fa-scissors loader-icon"></i>
+            <h2 class="loader-text">Selvi Couture House</h2>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-scissors"></i> Selvi Couture House
+            </a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link" data-i18n="nav.home">Home</a></li>
+                <li><a href="about.html" class="nav-link" data-i18n="nav.about">About</a></li>
+                <li><a href="services.html" class="nav-link" data-i18n="nav.services">Services</a></li>
+                <li><a href="gallery.html" class="nav-link" data-i18n="nav.gallery">Gallery</a></li>
+                <li><a href="pricing.html" class="nav-link" data-i18n="nav.pricing">Pricing</a></li>
+                <li><a href="track.html" class="nav-link">Track Order</a></li>
+                <li><a href="contact.html" class="nav-link active" data-i18n="nav.contact">Contact</a></li>
+                <li><button id="lang-toggle" class="btn btn-gold" style="padding: 0.4rem 1rem;">தமிழ்</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header"
+        style="background: var(--primary-maroon); padding: 8rem 0 4rem; text-align: center; color: white;">
+        <div class="container">
+            <h1 style="font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 1rem;">Get in Touch</h1>
+            <p style="opacity: 0.8; font-size: 1.2rem;">Book your slot or visit our boutique</p>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="reveal">
+                    <h2 class="section-title" style="text-align: left; left: 0; transform: none;">Contact Details</h2>
+                    <p style="margin-bottom: 2rem;">Visit us for a personal consultation and measurement session.</p>
+
+                    <div style="margin-bottom: 2rem;">
+                        <p><strong><i class="fas fa-map-marker-alt"></i> Address:</strong></p>
+                        <p>9/732, Sri Nagar, Thalaiyuthu, Shankar Nagar, Tirunelveli, TamilNadu 627-357</p>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <p><strong><i class="fas fa-phone"></i> Phone:</strong></p>
+                        <p>+91 81226 98966</p>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <p><strong><i class="fas fa-envelope"></i> Email:</strong></p>
+                        <p>sasiselvi.234@gmail.com</p>
+                    </div>
+
+                    <div class="map-container" style="border-radius: 8px; overflow: hidden; height: 250px;">
+                        <iframe
+                            src="https://maps.google.com/maps?q=9/732,%20Sri%20Nagar,%20Thalaiyuthu,%20Shankar%20Nagar,%20Tirunelveli,%20TamilNadu%20627-357&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <h2 class="section-title" style="text-align: left; left: 0; transform: none;">Book Appointment</h2>
+                    <form id="booking-form" class="booking-form">
+                        <div class="form-group"><label class="form-label">Full Name</label><input type="text"
+                                class="form-input" required placeholder="Enter your name"></div>
+                        <div class="form-group"><label class="form-label">Phone Number</label><input type="tel"
+                                class="form-input" required placeholder="+91 XXXXX XXXXX"></div>
+                        <div class="form-group"><label class="form-label">Service</label><select class="form-select">
+                                <option>Women's Blouse</option>
+                                <option>Salwar</option>
+                                <option>Bridal</option>
+                            </select></div>
+                        <div class="form-group"><label class="form-label">Date</label><input type="date"
+                                class="form-input"></div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Confirm Booking</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 Selvi Couture House. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Measurement Guide | Selvi Couture House</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description"
+        content="Learn how to take perfect body measurements for your custom tailored outfits. Step-by-step guide for Blouses, Salwars, and Men's Shirts.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .guide-section {
+            padding: 4rem 1rem;
+        }
+
+        .guide-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .guide-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .guide-tab-btn {
+            padding: 1rem 2rem;
+            background: white;
+            border: 1px solid var(--primary-maroon);
+            color: var(--primary-maroon);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .guide-tab-btn.active,
+        .guide-tab-btn:hover {
+            background: var(--primary-maroon);
+            color: white;
+            box-shadow: 0 5px 15px rgba(128, 0, 0, 0.2);
+        }
+
+        .guide-content {
+            display: none;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .guide-content.active {
+            display: block;
+        }
+
+        .step-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .step-card {
+            text-align: center;
+        }
+
+        .step-img-placeholder {
+            width: 100%;
+            height: 200px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            margin-bottom: 1rem;
+            border: 2px dashed #ddd;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 */
+            height: 0;
+            background: #000;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-scissors"></i> Selvi Couture House
+            </a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="measurement-guide.html" class="nav-link active">Measure Guide</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="track.html" class="nav-link">Track Order</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="hero"
+        style="height: 40vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/assets/images/hero-banner.png'); background-position: center;">
+        <div class="container" style="text-align: center;">
+            <h1 style="color: white; font-size: 3rem;">Measurement Guide</h1>
+            <p style="color: var(--primary-gold); font-size: 1.2rem;">How to measure yourself perfectly at home</p>
+        </div>
+    </header>
+
+    <!-- Guide Section -->
+    <section class="guide-section">
+        <div class="guide-container">
+            <div class="guide-tabs">
+                <button class="guide-tab-btn active" onclick="showGuide('blouse')">Blouse Guide</button>
+                <button class="guide-tab-btn" onclick="showGuide('salwar')">Salwar/Kurti</button>
+                <button class="guide-tab-btn" onclick="showGuide('men')">Men's Wear</button>
+            </div>
+
+            <!-- Blouse Guide -->
+            <div id="blouse" class="guide-content active">
+                <h2 class="section-title">Blouse Measurement Guide</h2>
+                <div class="video-container">
+                    <!-- Placeholder video -->
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=placeholder"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="step-grid">
+                    <div class="step-card">
+                        <div class="step-img-placeholder"><i class="fas fa-arrows-alt-h fa-3x"></i></div>
+                        <h3>1. Shoulder</h3>
+                        <p>Measure from one shoulder bone to the other across the back.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-img-placeholder"><i class="fas fa-ruler-horizontal fa-3x"></i></div>
+                        <h3>2. Chest/Bust</h3>
+                        <p>Measure around the fullest part of your chest, keeping tape relaxed.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-img-placeholder"><i class="fas fa-compress-arrows-alt fa-3x"></i></div>
+                        <h3>3. Waist</h3>
+                        <p>Measure around your natural waistline where the blouse ends.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Salwar Guide -->
+            <div id="salwar" class="guide-content">
+                <h2 class="section-title">Salwar & Kurti Guide</h2>
+                <div class="step-grid">
+                    <div class="step-card">
+                        <div class="step-img-placeholder"><i class="fas fa-arrows-alt-v fa-3x"></i></div>
+                        <h3>1. Full Length</h3>
+                        <p>Measure from shoulder to your desired length (knee/ankle).</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-img-placeholder"><i class="fas fa-child fa-3x"></i></div>
+                        <h3>2. Hip</h3>
+                        <p>Measure around the widest part of your hips.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-img-placeholder"><i class="fas fa-tshirt fa-3x"></i></div>
+                        <h3>3. Sleeve Length</h3>
+                        <p>Measure from shoulder edge to desired sleeve end.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Men Guide -->
+            <div id="men" class="guide-content">
+                <h2 class="section-title">Men's Shirt & Pant</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">Follow these simple steps for a sharp fit.</p>
+                <div class="step-grid">
+                    <div class="step-card">
+                        <h3>Shirt: Collar</h3>
+                        <p>Measure around the neck, leaving one finger gap.</p>
+                    </div>
+                    <div class="step-card">
+                        <h3>Shirt: Chest</h3>
+                        <p>Measure under armpits around the fullest part of chest.</p>
+                    </div>
+                    <div class="step-card">
+                        <h3>Pant: Waist</h3>
+                        <p>Measure where you normally wear your pants.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Selvi Couture House</h3>
+                    <p>Your destination for premium custom tailoring in Tamil Nadu.</p>
+                </div>
+                <!-- ... (Simplified footer for brevity, or include full) ... -->
+                <!-- I'll rely on the main footer structure but keep it simple here or copy full -->
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <p><a href="index.html" style="color:#888;">Home</a></p>
+                    <p><a href="contact.html" style="color:#888;">Contact</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Selvi Couture House.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showGuide(id) {
+            // Hide all
+            document.querySelectorAll('.guide-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.guide-tab-btn').forEach(el => el.classList.remove('active'));
+
+            // Show selected
+            document.getElementById(id).classList.add('active');
+
+            // Highlight button
+            // Find button with specific onclick text or index? 
+            // Simple way:
+            const btns = document.querySelectorAll('.guide-tab-btn');
+            if (id === 'blouse') btns[0].classList.add('active');
+            if (id === 'salwar') btns[1].classList.add('active');
+            if (id === 'men') btns[2].classList.add('active');
+        }
+    </script>
+    <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Selvi Couture House</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-maroon: #800000;
+            --primary-gold: #FFD700;
+            --white: #FFFFFF;
+            --bg-creme: #FDFBF7;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-creme);
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--primary-maroon);
+            padding-bottom: 1rem;
+        }
+
+        h1 {
+            color: var(--primary-maroon);
+            margin: 0;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            background: var(--primary-maroon);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: var(--primary-maroon);
+            color: white;
+        }
+
+        select {
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .status-placed {
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        .status-measurement {
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .status-stitching {
+            color: #9b59b6;
+            font-weight: bold;
+        }
+
+        .status-ready {
+            color: #2ecc71;
+            font-weight: bold;
+        }
+
+        .status-delivered {
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        #login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-maroon);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .login-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 1rem 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="login-screen">
+        <div class="login-box">
+            <h2>Admin Login</h2>
+            <p>Enter PIN (1234)</p>
+            <input type="password" id="pin-input" placeholder="PIN">
+            <button onclick="checkPin()" class="btn">Login</button>
+        </div>
+    </div>
+
+    <div class="header">
+        <h1>Selvi Couture - Orders</h1>
+        <a href="index.html" class="btn">Back to Site</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer Name</th>
+                <th>Service</th>
+                <th>Status</th>
+                <th>Progress Photos</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="order-table">
+            <!-- Orders will be loaded here -->
+        </tbody>
+    </table>
+
+    <script>
+        // Simple Auth
+        function checkPin() {
+            const pin = document.getElementById('pin-input').value;
+            if (pin === '1234') {
+                document.getElementById('login-screen').style.display = 'none';
+                loadOrders();
+            } else {
+                alert('Invalid PIN');
+            }
+        }
+
+        function loadOrders() {
+            const tbody = document.getElementById('order-table');
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align:center">Loading...</td></tr>';
+
+            fetch('/api/orders')
+                .then(res => res.json())
+                .then(json => {
+                    const orders = json.data;
+                    tbody.innerHTML = '';
+
+                    if (orders.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center">No orders found</td></tr>';
+                        return;
+                    }
+
+                    orders.forEach(order => {
+                        const tr = document.createElement('tr');
+                        const photoCount = order.photos ? order.photos.length : 0;
+                        tr.innerHTML = `
+                        <td>${order.id}</td>
+                        <td>${order.name}</td>
+                        <td>${order.service}</td>
+                        <td>
+                             <select onchange="updateStatus('${order.id}', this.value)" class="status-select status-${order.status}">
+                                <option value="placed" ${order.status === 'placed' ? 'selected' : ''}>Placed</option>
+                                <option value="measurement" ${order.status === 'measurement' ? 'selected' : ''}>Measurement</option>
+                                <option value="stitching" ${order.status === 'stitching' ? 'selected' : ''}>Stitching</option>
+                                <option value="ready" ${order.status === 'ready' ? 'selected' : ''}>Ready</option>
+                                <option value="delivered" ${order.status === 'delivered' ? 'selected' : ''}>Delivered</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button class="btn" style="background:#555; font-size:0.8rem;" onclick="addPhoto('${order.id}')">Add Photo (${photoCount})</button>
+                        </td>
+                        <td>
+                             <button class="btn" style="background:var(--primary-gold); color:black; font-size:0.8rem;" onclick="sendReminder('${order.id}')">🛎️ Remind</button>
+                        </td>
+                    `;
+                        tbody.appendChild(tr);
+                    });
+                })
+                .catch(err => {
+                    console.error(err);
+                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; color:red">Error loading orders</td></tr>';
+                });
+        }
+
+        function updateStatus(id, newStatus) {
+            fetch(`/api/orders/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status: newStatus })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    // alert(`Order ${id} updated to ${newStatus}`);
+                    loadOrders(); // Refresh table to update colors
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert('Failed to update status');
+                });
+        }
+
+        function addPhoto(id) {
+            const url = prompt("Enter Progress Photo URL:");
+            if (url) {
+                // Get current order to append photo
+                fetch(`/api/orders/${id}`)
+                    .then(r => r.json())
+                    .then(d => {
+                        const currentPhotos = d.data.photos || [];
+                        currentPhotos.push(url);
+
+                        return fetch(`/api/orders/${id}`, {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ photos: currentPhotos })
+                        });
+                    })
+                    .then(res => res.json())
+                    .then(() => {
+                        alert("Photo added!");
+                        loadOrders();
+                    });
+            }
+        }
+
+        function sendReminder(id) {
+            fetch(`/api/orders/${id}/remind`, { method: 'POST' })
+                .then(res => res.json())
+                .then(data => {
+                    alert(data.message);
+                });
+        }
+    </script>
+</body>
+
+</html>

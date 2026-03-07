@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order | Selvi Couture House</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <i class="fas fa-scissors loader-icon"></i>
+            <h2 class="loader-text">Selvi Couture House</h2>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-scissors"></i> Selvi Couture House
+            </a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link" data-i18n="nav.home">Home</a></li>
+                <li><a href="about.html" class="nav-link" data-i18n="nav.about">About</a></li>
+                <li><a href="services.html" class="nav-link" data-i18n="nav.services">Services</a></li>
+                <li><a href="gallery.html" class="nav-link" data-i18n="nav.gallery">Gallery</a></li>
+                <li><a href="pricing.html" class="nav-link" data-i18n="nav.pricing">Pricing</a></li>
+                <li><a href="track.html" class="nav-link active">Track Order</a></li>
+                <li><a href="contact.html" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+                <li><button id="lang-toggle" class="btn btn-gold" style="padding: 0.4rem 1rem;">தமிழ்</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header"
+        style="background: var(--primary-maroon); padding: 8rem 0 4rem; text-align: center; color: white;">
+        <div class="container">
+            <h1 style="font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 1rem;">Track Order</h1>
+            <p style="opacity: 0.8; font-size: 1.2rem;">Check your stitching progress</p>
+        </div>
+    </header>
+
+    <!-- Tracking Section -->
+    <section id="track" class="section">
+        <div class="container">
+            <div class="tracking-container reveal" style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <p style="margin-bottom: 2rem;">Enter your Order ID to check status.</p>
+
+                <form id="track-order-form" style="display: flex; gap: 1rem; margin-bottom: 3rem;">
+                    <input type="text" id="order-id-input" class="form-input" placeholder="e.g. SCH-2024"
+                        style="flex: 1;">
+                    <button type="submit" class="btn btn-primary">Track</button>
+                </form>
+
+                <div id="track-result"
+                    style="display: none; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <h3 id="order-id-display" style="color: var(--primary-maroon); margin-bottom: 0.5rem;"></h3>
+                    <p id="order-service-display" style="color: #666; margin-bottom: 2rem;"></p>
+
+                    <div class="storage-timeline">
+                        <div class="storage-step" id="status-placed">
+                            <div class="step-dot"></div>
+                            <div class="step-label">Placed</div>
+                        </div>
+                        <div class="storage-step" id="status-measurement">
+                            <div class="step-dot"></div>
+                            <div class="step-label">Measure</div>
+                        </div>
+                        <div class="storage-step" id="status-stitching">
+                            <div class="step-dot"></div>
+                            <div class="step-label">Stitching</div>
+                        </div>
+                        <div class="storage-step" id="status-ready">
+                            <div class="step-dot"></div>
+                            <div class="step-label">Ready</div>
+                        </div>
+                        <div class="storage-step" id="status-delivered">
+                            <div class="step-dot"></div>
+                            <div class="step-label">Delivered</div>
+                        </div>
+                    </div>
+
+                    <div id="progress-photos-section" style="margin-top: 2rem; display: none;">
+                        <h4 style="color: var(--primary-maroon); margin-bottom: 1rem;">Work in Progress</h4>
+                        <div id="progress-photos-grid"
+                            style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                            <!-- Photos injected via JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 Selvi Couture House. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

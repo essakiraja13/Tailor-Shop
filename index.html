@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selvi Couture House | Exclusive Ladies & Bridal Studio</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description"
+        content="Exclusive Ladies & Bridal tailoring services in Tamil Nadu. Designer Blouses, Gowns, and Wedding wear. Perfect fit, on-time delivery.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://selvicouture.com/">
+    <meta property="og:title" content="Selvi Couture House | Premium Ladies Boutique">
+    <meta property="og:description" content="Expert Aari work, Bridal Stitching, and Designer Gowns in Tamil Nadu.">
+    <meta property="og:image" content="https://selvicouture.com/assets/images/hero-banner.png">
+
+    <!-- Preload Hero Image for LCP -->
+    <link rel="preload" as="image" href="/assets/images/hero-banner.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <i class="fas fa-scissors loader-icon"></i>
+            <h2 class="loader-text">Selvi Couture House</h2>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-scissors"></i> Selvi Couture House
+            </a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link active" data-i18n="nav.home">Home</a></li>
+                <li><a href="about.html" class="nav-link" data-i18n="nav.about">About</a></li>
+                <li><a href="collections.html" class="nav-link">Collections</a></li>
+                <li><a href="services.html" class="nav-link" data-i18n="nav.services">Services</a></li>
+                <li><a href="gallery.html" class="nav-link" data-i18n="nav.gallery">Gallery</a></li>
+                <li><a href="measurement-guide.html" class="nav-link">Measure Guide</a></li>
+                <li><a href="pricing.html" class="nav-link" data-i18n="nav.pricing">Pricing</a></li>
+                <li><a href="track.html" class="nav-link">Track Order</a></li>
+                <li><a href="contact.html" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+                <li><button id="lang-toggle" class="btn btn-gold" style="padding: 0.4rem 1rem;">தமிழ்</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Quick Actions (Mobile First focus) -->
+    <div class="container"
+        style="margin-top: 1rem; display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem;">
+        <a href="contact.html?service=blouse" class="btn btn-gold" style="font-size: 0.8rem; white-space: nowrap;"><i
+                class="fas fa-tshirt"></i> Book Blouse</a>
+        <a href="contact.html?service=aari" class="btn btn-gold" style="font-size: 0.8rem; white-space: nowrap;"><i
+                class="fas fa-gem"></i> Book Aari</a>
+        <a href="contact.html?service=uniform" class="btn btn-gold" style="font-size: 0.8rem; white-space: nowrap;"><i
+                class="fas fa-user-nurse"></i> Uniforms</a>
+        <a href="contact.html?service=alteration" class="btn btn-gold"
+            style="font-size: 0.8rem; white-space: nowrap;"><i class="fas fa-cut"></i> Alteration</a>
+    </div>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-i18n="hero.title">Perfect Stitching • Perfect Fit</h1>
+                <p class="hero-tagline" data-i18n="hero.tagline">Experience the art of premium tailoring with on-time
+                    delivery.</p>
+                <div class="hero-buttons">
+                    <a href="contact.html" class="btn btn-primary" data-i18n="hero.bookBtn">Book Appointment</a>
+                    <a href="tel:+918122698966" class="btn btn-secondary" data-i18n="hero.callBtn">Call Now</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Summary -->
+    <section class="section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <img src="/assets/images/about-us.png" alt="Selvi Couture House Interior" loading="lazy"
+                        decoding="async">
+                </div>
+                <div class="about-content reveal">
+                    <h2 class="section-title" style="text-align: left; left: 0; transform: none;"
+                        data-i18n="about.title">About Us</h2>
+                    <p style="margin-bottom: 2rem;" data-i18n="about.desc1">Established in 2024, Selvi Couture House
+                        brings the finest craftsmanship to Tamil Nadu. We specialize in Aari work, Bridal Blouses, and
+                        custom-fit dresses for women and children.</p>
+                    <a href="about.html" class="btn btn-secondary">Read Our Story</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="section" style="background: var(--bg-creme);">
+        <div class="container">
+            <h2 class="section-title" data-i18n="services.title">Our Expertise</h2>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <i class="fas fa-ring service-icon"></i>
+                    <h3 data-i18n="services.bridal">Bridal Stitching</h3>
+                    <p>Exclusive bridal blouses with Aari work and embroidery.</p>
+                </div>
+                <div class="service-card reveal">
+                    <i class="fas fa-female service-icon"></i>
+                    <h3 data-i18n="services.women">Women's Boutique</h3>
+                    <p>Blouses, Salwars, Lehengas, and Saree falls.</p>
+                </div>
+                <div class="service-card reveal">
+                    <i class="fas fa-child service-icon"></i>
+                    <h3 data-i18n="services.kids">Kids Wear</h3>
+                    <p>Traditional Pattu Pavadai and Party wear for girls.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="services.html" class="btn btn-primary">View All Services</a>
+            </div>
+        </div>
+    </section>
+
+    </section>
+
+    <!-- Top Designs / Trending -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Trending Designs 🏆</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x400?text=Bridal+Trend+1" alt="Trending 1">
+                    <div
+                        style="position: absolute; bottom: 0; background: rgba(0,0,0,0.7); color: white; width: 100%; padding: 0.5rem; text-align: center;">
+                        Best Seller</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x400?text=Aari+Work+2" alt="Trending 2">
+                    <div
+                        style="position: absolute; bottom: 0; background: rgba(0,0,0,0.7); color: white; width: 100%; padding: 0.5rem; text-align: center;">
+                        Most Viewed</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x400?text=Gown+Special" alt="Trending 3">
+                    <div
+                        style="position: absolute; bottom: 0; background: rgba(0,0,0,0.7); color: white; width: 100%; padding: 0.5rem; text-align: center;">
+                        Premium</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="gallery.html" class="btn btn-secondary"
+                    style="border-color: var(--primary-maroon); color: var(--primary-maroon);">View Full Gallery</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" style="background: var(--primary-maroon); color: white; text-align: center;">
+        <div class="container">
+            <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 1rem;">Ready for a Perfect Fit?</h2>
+            <p style="margin-bottom: 2rem; opacity: 0.9;">Book your measurement session online today.</p>
+            <a href="contact.html" class="btn btn-gold">Book Appointment Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Selvi Couture House</h3>
+                    <p>Your destination for premium custom tailoring in Tamil Nadu. We bring your dream designs to life.
+                    </p>
+                    <div class="social-links" style="margin-top: 1rem;">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <div class="map-container" style="margin-bottom: 1rem; border-radius: 4px; overflow: hidden;">
+                        <iframe
+                            src="https://maps.google.com/maps?q=9/732,%20Sri%20Nagar,%20Thalaiyuthu,%20Shankar%20Nagar,%20Tirunelveli,%20TamilNadu%20627-357&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                            width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
+                    <p><i class="fas fa-map-marker-alt"></i> 9/732, Sri Nagar, Thalaiyuthu, Shankar Nagar, Tirunelveli,
+                        TamilNadu 627-357</p>
+                    <p><i class="fas fa-phone"></i> +91 81226 98966</p>
+                    <p><i class="fas fa-envelope"></i> sasiselvi.234@gmail.com</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Hours</h3>
+                    <p>Mon - Sat: 9:00 AM - 9:00 PM</p>
+                    <p>Sunday: Holiday</p>
+                    <div
+                        style="margin-top: 1rem; background: white; padding: 0.5rem; display: inline-block; border-radius: 4px;">
+                        <p style="color: black; font-weight: bold; margin-bottom: 5px;">Scan to Pay</p>
+                        <i class="fas fa-qrcode" style="font-size: 3rem; color: black;"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Selvi Couture House. All rights reserved. | <a href="#" id="privacy-link"
+                        style="color: #888; text-decoration: underline;">Privacy Policy</a> | <a href="admin.html"
+                        style="color: #555; text-decoration: none; margin-left: 10px;">Admin</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <div class="floating-actions">
+        <a href="https://wa.me/918122698966" class="float-btn whatsapp-btn" target="_blank"><i
+                class="fab fa-whatsapp"></i></a>
+        <a href="tel:+918122698966" class="float-btn call-btn"><i class="fas fa-phone"></i></a>
+    </div>
+
+    </div>
+
+    <button id="back-to-top" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Privacy Modal -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Privacy Policy</h2>
+            <p>At Selvi Couture House, we respect your privacy. We collect your name, phone number, and measurement
+                details solely for the purpose of fulfilling your stitching orders. We do not share your data with any
+                third parties.</p>
+            <p>For any concerns, please contact us at sasiselvi.234@gmail.com.</p>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-img" id="lightbox-img">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content" style="text-align: center;">
+            <span class="close-payment">&times;</span>
+            <h2 style="color: var(--primary-maroon);">Scan to Pay</h2>
+            <p>Use any UPI App to pay advance</p>
+            <div style="margin: 2rem 0; padding: 1rem; border: 2px dashed var(--primary-gold); display: inline-block;">
+                <i class="fas fa-qrcode" style="font-size: 10rem; color: #333;"></i>
+                <!-- In production, replace icon with real QR image -->
+            </div>
+            <p style="font-weight: bold; font-size: 1.2rem;">UPI ID: selvicouture@oksbi</p>
+            <p style="color: #666; font-size: 0.9rem; margin-top: 1rem;">After payment, please share screenshot on
+                WhatsApp.</p>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
