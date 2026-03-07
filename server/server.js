@@ -48,6 +48,9 @@ const dbRun = (sql, params = []) => {
 };
 
 // API Routes
+app.get('/', (req, res) => {
+    res.send('Tasri Vinayaga Tailors API is running smoothly!');
+});
 app.get('/api/orders', async (req, res) => {
     try {
         const rows = await dbAll('SELECT * FROM orders');
