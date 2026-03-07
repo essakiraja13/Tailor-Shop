@@ -177,7 +177,7 @@
             const tbody = document.getElementById('order-table');
             tbody.innerHTML = '<tr><td colspan="6" style="text-align:center">Loading...</td></tr>';
 
-            fetch('/api/orders')
+            fetch('https://tasri-backend.onrender.com/api/orders')
                 .then(res => res.json())
                 .then(json => {
                     const orders = json.data;
@@ -221,7 +221,7 @@
         }
 
         function updateStatus(id, newStatus) {
-            fetch(`/api/orders/${id}`, {
+            fetch(`https://tasri-backend.onrender.com/api/orders/${id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ status: newStatus })
@@ -241,13 +241,13 @@
             const url = prompt("Enter Progress Photo URL:");
             if (url) {
                 // Get current order to append photo
-                fetch(`/api/orders/${id}`)
+                fetch(`https://tasri-backend.onrender.com/api/orders/${id}`)
                     .then(r => r.json())
                     .then(d => {
                         const currentPhotos = d.data.photos || [];
                         currentPhotos.push(url);
 
-                        return fetch(`/api/orders/${id}`, {
+                        return fetch(`https://tasri-backend.onrender.com/api/orders/${id}`, {
                             method: 'PUT',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ photos: currentPhotos })
@@ -262,7 +262,7 @@
         }
 
         function sendReminder(id) {
-            fetch(`/api/orders/${id}/remind`, { method: 'POST' })
+            fetch(`https://tasri-backend.onrender.com/api/orders/${id}/remind`, { method: 'POST' })
                 .then(res => res.json())
                 .then(data => {
                     alert(data.message);
