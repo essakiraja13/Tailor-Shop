@@ -8,10 +8,11 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -19,8 +20,7 @@
     <!-- Preloader -->
     <div id="preloader">
         <div class="loader-content">
-            <i class="fas fa-scissors loader-icon"></i>
-            <h2 class="loader-text">Selvi Couture House</h2>
+            <img src="/assets/images/logo.png" alt="Selvi Couture House Loader" style="height: 100px; animation: pulse 1.5s infinite;">
         </div>
     </div>
 
@@ -28,7 +28,7 @@
     <nav class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <i class="fas fa-scissors"></i> Selvi Couture House
+                <img src="/assets/images/logo.png" alt="Selvi Couture House" style="height: 50px; object-fit: contain;">
             </a>
             <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
             <ul class="nav-links">
@@ -64,24 +64,21 @@
                 <button class="filter-btn">Gowns</button>
             </div>
             <div class="gallery-grid reveal">
-                <div class="gallery-item" data-category="blouses"><img
-                        src="https://images.unsplash.com/photo-1598554747436-b92455353592?auto=format&fit=crop&w=400&q=80"
-                        alt="Design 1" loading="lazy" decoding="async"></div>
-                <div class="gallery-item" data-category="bridal"><img
-                        src="https://images.unsplash.com/photo-1596489392215-66170823577d?auto=format&fit=crop&w=400&q=80"
-                        alt="Design 2" loading="lazy" decoding="async"></div>
-                <div class="gallery-item" data-category="salwars"><img
-                        src="https://images.unsplash.com/photo-1620799140408-ed5341cd2431?auto=format&fit=crop&w=400&q=80"
-                        alt="Design 3" loading="lazy" decoding="async"></div>
-                <div class="gallery-item" data-category="gowns"><img
-                        src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=400&q=80"
-                        alt="Design 4" loading="lazy" decoding="async"></div>
-                <div class="gallery-item" data-category="blouses"><img
-                        src="https://images.unsplash.com/photo-1591369822096-ffd140ec948f?auto=format&fit=crop&w=400&q=80"
-                        alt="Design 5" loading="lazy" decoding="async"></div>
-                <div class="gallery-item" data-category="bridal"><img
-                        src="https://images.unsplash.com/photo-1585123334904-845d60e97b29?auto=format&fit=crop&w=400&q=80"
-                        alt="Design 6" loading="lazy" decoding="async"></div>
+                <div class="gallery-item" data-category="blouses">
+                    <img src="/assets/images/design-1.jpg" alt="Blue Saree Design" loading="lazy" decoding="async">
+                </div>
+                <div class="gallery-item" data-category="bridal">
+                    <img src="/assets/images/design-2.png" alt="Maroon Bridal Blouse" loading="lazy" decoding="async">
+                </div>
+                <div class="gallery-item" data-category="blouses">
+                    <img src="/assets/images/design-3.jpg" alt="Blue Puff Sleeve Blouse" loading="lazy" decoding="async">
+                </div>
+                <div class="gallery-item" data-category="bridal">
+                    <img src="/assets/images/design-4.jpg" alt="Maroon Blouse Details" loading="lazy" decoding="async">
+                </div>
+                <div class="gallery-item" data-category="blouses">
+                    <img src="/assets/images/design-5.jpg" alt="Intricate Blue Pink Blouse" loading="lazy" decoding="async">
+                </div>
             </div>
         </div>
     </section>

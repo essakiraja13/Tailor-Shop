@@ -8,10 +8,11 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -19,8 +20,7 @@
     <!-- Preloader -->
     <div id="preloader">
         <div class="loader-content">
-            <i class="fas fa-scissors loader-icon"></i>
-            <h2 class="loader-text">Selvi Couture House</h2>
+            <img src="/assets/images/logo.png" alt="Selvi Couture House Loader" style="height: 100px; animation: pulse 1.5s infinite;">
         </div>
     </div>
 
@@ -28,7 +28,7 @@
     <nav class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <i class="fas fa-scissors"></i> Selvi Couture House
+                <img src="/assets/images/logo.png" alt="Selvi Couture House" style="height: 50px; object-fit: contain;">
             </a>
             <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
             <ul class="nav-links">
@@ -200,8 +200,31 @@
             const sleeve = document.getElementById('cust-sleeve').value;
             const color = document.getElementById('cust-color').value;
 
-            const msg = `Custom Design Request:%0AName: ${name}%0APhone: ${phone}%0ANeck: ${neck}%0ASleeve: ${sleeve}%0AColor: ${color}%0A(I have a reference image)`;
-            window.open(`https://wa.me/918122698966?text=${msg}`, '_blank');
+            const orderId = 'SCH-' + Math.floor(1000 + Math.random() * 9000);
+            const serviceDesc = `Custom Design: ${neck}, ${sleeve}, ${color}`;
+
+            const orderData = {
+                id: orderId,
+                name: name,
+                phone: phone,
+                service: serviceDesc,
+                status: 'placed'
+            };
+
+            fetch('/api/orders', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(orderData)
+            })
+            .then(res => res.json())
+            .then(data => {
+                alert('Your custom design request has been submitted! Order ID: ' + orderId);
+                document.getElementById('custom-design-form').reset();
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Error submitting request. Please try again.');
+            });
         }
     </script>
 

@@ -1,0 +1,32 @@
+{
+  "name": "Selvi Couture House",
+  "short_name": "SelviCouture",
+  "description": "Premium Ladies & Bridal Tailoring in Tamil Nadu",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#FDFBF7",
+  "theme_color": "#800000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Track Order",
+      "short_name": "Track",
+      "url": "/track.html",
+      "description": "Track your stitching order"
+    },
+    {
+      "name": "Book Appointment",
+      "short_name": "Book",
+      "url": "/contact.html",
+      "description": "Book a new appointment"
+    }
+  ]
+}

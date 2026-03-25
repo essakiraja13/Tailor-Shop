@@ -1,3 +1,6 @@
+// Mark JS as active — enables scroll animations safely
+document.body.classList.add('js-loaded');
+
 // Translations
 const translations = {
   en: {
@@ -161,19 +164,19 @@ let currentLang = 'en';
 window.addEventListener('load', () => {
   const preloader = document.getElementById('preloader');
   if (preloader) {
-    // Force remove after 3s max to prevent blocking
+    // Force remove after 400ms max — fast page reveal
     const safetyTimeout = setTimeout(() => {
       preloader.style.opacity = '0';
-      setTimeout(() => preloader.style.display = 'none', 500);
-    }, 3000);
+      setTimeout(() => preloader.style.display = 'none', 300);
+    }, 400);
 
     requestAnimationFrame(() => {
-      preloader.style.transition = 'opacity 0.5s ease-out';
+      preloader.style.transition = 'opacity 0.3s ease-out';
       preloader.style.opacity = '0';
       setTimeout(() => {
         preloader.style.display = 'none';
         clearTimeout(safetyTimeout);
-      }, 500);
+      }, 300);
     });
   }
 });
@@ -230,16 +233,20 @@ document.addEventListener('DOMContentLoaded', () => {
     bookingForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const name = document.querySelector('input[placeholder="Enter your name"]').value;
+      const nameInput = document.querySelector('input[placeholder="Enter your name"]');
+      const phoneInput = document.querySelector('input[placeholder="+91 XXXXX XXXXX"]');
+      const name = nameInput ? nameInput.value : '';
+      const phone = phoneInput ? phoneInput.value : '';
       const service = document.querySelectorAll('.form-select')[0].value;
 
       // Generate Order ID (SCH-XXXX)
       const orderId = 'SCH-' + Math.floor(1000 + Math.random() * 9000);
 
-      // Save to Database via API
+      // Save to Database via API — NOW INCLUDES PHONE ✅
       const orderData = {
         id: orderId,
         name: name,
+        phone: phone,
         service: service,
         status: 'placed',
         timestamp: new Date().toISOString()
@@ -247,22 +254,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
       fetch('/api/orders', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(orderData),
       })
         .then(response => response.json())
         .then(data => {
-          console.log('Success:', data);
-          alert(`Booking Confirmed! Your Order ID is: ${orderId}\nPlease save this ID to track your order status.`);
+          console.log('Booking saved:', data);
           bookingForm.reset();
+          showBookingSuccess(orderId, name, service);
         })
         .catch((error) => {
           console.error('Error:', error);
           alert('Error saving booking. Please try again.');
         });
     });
+  }
+
+  // Booking Success Modal injector
+  function showBookingSuccess(orderId, name, service) {
+    const existing = document.getElementById('booking-success-modal');
+    if (existing) existing.remove();
+
+    const modal = document.createElement('div');
+    modal.id = 'booking-success-modal';
+    modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:9999;animation:fadeIn 0.3s ease';
+    modal.innerHTML = `
+      <div style="background:white;border-radius:16px;padding:2.5rem;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+        <div style="font-size:4rem;margin-bottom:1rem;">🎉</div>
+        <h2 style="color:#800000;font-family:'Playfair Display',serif;margin-bottom:0.5rem;">Booking Confirmed!</h2>
+        <p style="color:#666;margin-bottom:1.5rem;">Thank you, <strong>${name}</strong>! Your <strong>${service}</strong> appointment is booked.</p>
+        <div style="background:#FFF8E7;border:2px solid #FFD700;border-radius:10px;padding:1rem;margin-bottom:1.5rem;">
+          <p style="font-size:0.85rem;color:#666;margin-bottom:0.3rem;">Your Order ID</p>
+          <p style="font-size:1.8rem;font-weight:700;color:#800000;letter-spacing:2px;">${orderId}</p>
+          <p style="font-size:0.8rem;color:#999;margin-top:0.3rem;">Save this ID to track your order</p>
+        </div>
+        <div style="display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap;">
+          <button onclick="navigator.clipboard.writeText('${orderId}').then(()=>this.textContent='✅ Copied!')" 
+            style="background:#800000;color:white;border:none;padding:0.7rem 1.5rem;border-radius:50px;cursor:pointer;font-weight:600;">
+            📋 Copy ID
+          </button>
+          <a href="https://wa.me/918122698966?text=Hi!%20I%20just%20booked.%20My%20Order%20ID%20is%20${orderId}%20(${encodeURIComponent(name)}%20-%20${encodeURIComponent(service)})" 
+            target="_blank"
+            style="background:#25D366;color:white;text-decoration:none;padding:0.7rem 1.5rem;border-radius:50px;font-weight:600;">
+            💬 Share on WhatsApp
+          </a>
+        </div>
+        <button onclick="document.getElementById('booking-success-modal').remove()" 
+          style="margin-top:1.2rem;background:none;border:none;color:#999;cursor:pointer;font-size:0.9rem;text-decoration:underline;">Close</button>
+      </div>
+    `;
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+    document.body.appendChild(modal);
   }
 
   // Order Tracking Logic
@@ -300,6 +342,44 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('track-result').style.display = 'none';
           }
         });
+    });
+  }
+
+  // Auto-refresh order status every 30 seconds on track.html
+  if (document.getElementById('track-order-form')) {
+    let trackAutoRefreshInterval = null;
+    let lastTrackedId = null;
+
+    window.startAutoRefresh = (orderId) => {
+      lastTrackedId = orderId;
+      if (trackAutoRefreshInterval) clearInterval(trackAutoRefreshInterval);
+      trackAutoRefreshInterval = setInterval(() => {
+        if (!lastTrackedId) return;
+        fetch(`/api/orders/${lastTrackedId}`)
+          .then(r => r.ok ? r.json() : Promise.reject())
+          .then(json => {
+            updateTrackingUI(json.data);
+            const badge = document.getElementById('live-badge');
+            if (badge) badge.textContent = '🔄 Updated ' + new Date().toLocaleTimeString();
+          })
+          .catch(() => {});
+      }, 30000);
+
+      const result = document.getElementById('track-result');
+      if (result && !document.getElementById('live-badge')) {
+        const badge = document.createElement('p');
+        badge.id = 'live-badge';
+        badge.style.cssText = 'font-size:0.75rem;color:#25D366;margin-top:0.8rem;font-weight:600;';
+        badge.textContent = '🟢 Live tracking active (refreshes every 30s)';
+        result.appendChild(badge);
+      }
+    };
+
+    document.getElementById('track-order-form').addEventListener('submit', () => {
+      const input = document.getElementById('order-id-input');
+      if (input && input.value.trim()) {
+        setTimeout(() => window.startAutoRefresh(input.value.trim()), 800);
+      }
     });
   }
 
@@ -584,22 +664,7 @@ function injectChatbot() {
   }
 }
 
-function sendToWhatsApp() {
-  const name = document.querySelector('input[placeholder="Enter your name"]').value;
-  const phone = document.querySelector('input[placeholder="+91 XXXXX XXXXX"]').value;
-  const service = document.querySelectorAll('.form-select')[0].value;
-  const type = document.querySelectorAll('.form-select')[1].value;
-  const date = document.querySelector('input[type="date"]').value;
 
-  if (!name || !phone) {
-    alert("Please enter Name and Phone Number");
-    return;
-  }
-
-  const message = `Hello Selvi Couture House,%0A%0AI would like to book an appointment.%0AName: ${name}%0APhone: ${phone}%0AService: ${service}%0AMeasurement: ${type}%0ADate: ${date}`;
-
-  window.open(`https://wa.me/918122698966?text=${message}`, '_blank');
-}
 
 function updateLanguage() {
   const t = translations[currentLang];

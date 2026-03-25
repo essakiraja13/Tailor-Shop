@@ -20,11 +20,14 @@
     "vite": "npm:rolldown-vite@7.2.5"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "body-parser": "^2.2.2",
     "compression": "^1.8.1",
     "concurrently": "^9.2.1",
     "cors": "^2.8.5",
+    "dotenv": "^17.3.1",
     "express": "^5.2.1",
-    "sqlite3": "^5.1.7"
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.2.4"
   }
 }

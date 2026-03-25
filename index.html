@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selvi Couture House | Exclusive Ladies & Bridal Studio</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#800000">
     <meta name="description"
         content="Exclusive Ladies & Bridal tailoring services in Tamil Nadu. Designer Blouses, Gowns, and Wedding wear. Perfect fit, on-time delivery.">
 
@@ -19,15 +21,24 @@
     <!-- Preload Hero Image for LCP -->
     <link rel="preload" as="image" href="/assets/images/hero-banner.webp">
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Non-blocking swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
-        rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+            rel="stylesheet">
+    </noscript>
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Icons: Non-blocking load -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </noscript>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -36,8 +47,7 @@
     <!-- Preloader -->
     <div id="preloader">
         <div class="loader-content">
-            <i class="fas fa-scissors loader-icon"></i>
-            <h2 class="loader-text">Selvi Couture House</h2>
+            <img src="/assets/images/logo.png" alt="Selvi Couture House Loader" style="height: 100px; animation: pulse 1.5s infinite;">
         </div>
     </div>
 
@@ -45,7 +55,7 @@
     <nav class="navbar">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <i class="fas fa-scissors"></i> Selvi Couture House
+                <img src="/assets/images/logo.png" alt="Selvi Couture House" style="height: 50px; object-fit: contain;">
             </a>
             <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
             <ul class="nav-links">
@@ -138,6 +148,43 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section class="section" style="background: var(--bg-creme);">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say ❤️</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <p>"The bridal blouse stitching was absolutely perfect! The Aari work was intricate and beautiful.
+                        Delivered on time for my wedding. Highly recommended!"</p>
+                    <div class="testimonial-author">
+                        <div style="width:50px;height:50px;min-width:50px;max-width:50px;flex:0 0 50px;border-radius:50%;background:linear-gradient(135deg,#FFD700,#800000);display:inline-flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;font-weight:700;">P</div>
+                        <div>
+                            <h4>Priya Sharma</h4><small>⭐⭐⭐⭐⭐ &nbsp;Chennai</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <p>"My daughter's Pattu Pavadai came out stunning. Perfect fit, premium fabric, and amazing
+                        stitching quality. Will definitely come back for more!"</p>
+                    <div class="testimonial-author">
+                        <div style="width:50px;height:50px;min-width:50px;max-width:50px;flex:0 0 50px;border-radius:50%;background:linear-gradient(135deg,#800000,#a00000);display:inline-flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;font-weight:700;">L</div>
+                        <div>
+                            <h4>Lakshmi K.</h4><small>⭐⭐⭐⭐⭐ &nbsp;Madurai</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <p>"Very professional and on-time delivery. I ordered 3 salwar sets and all came out perfectly
+                        stitched. The price is also very reasonable."</p>
+                    <div class="testimonial-author">
+                        <div style="width:50px;height:50px;min-width:50px;max-width:50px;flex:0 0 50px;border-radius:50%;background:linear-gradient(135deg,#4a0050,#800000);display:inline-flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;font-weight:700;">A</div>
+                        <div>
+                            <h4>Anitha R.</h4><small>⭐⭐⭐⭐⭐ &nbsp;Tirunelveli</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Top Designs / Trending -->
@@ -146,21 +193,18 @@
             <h2 class="section-title">Trending Designs 🏆</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="https://via.placeholder.com/400x400?text=Bridal+Trend+1" alt="Trending 1">
-                    <div
-                        style="position: absolute; bottom: 0; background: rgba(0,0,0,0.7); color: white; width: 100%; padding: 0.5rem; text-align: center;">
+                    <img src="/assets/images/design-2.png" alt="Best Seller Design" loading="lazy">
+                    <div style="position: absolute; bottom: 0; background: rgba(0,0,0,0.7); color: white; width: 100%; padding: 0.5rem; text-align: center;">
                         Best Seller</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://via.placeholder.com/400x400?text=Aari+Work+2" alt="Trending 2">
-                    <div
-                        style="position: absolute; bottom: 0; background: rgba(0,0,0,0.7); color: white; width: 100%; padding: 0.5rem; text-align: center;">
+                    <img src="/assets/images/design-3.jpg" alt="Most Viewed Design" loading="lazy">
+                    <div style="position: absolute; bottom: 0; background: rgba(0,0,0,0.7); color: white; width: 100%; padding: 0.5rem; text-align: center;">
                         Most Viewed</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="https://via.placeholder.com/400x400?text=Gown+Special" alt="Trending 3">
-                    <div
-                        style="position: absolute; bottom: 0; background: rgba(0,0,0,0.7); color: white; width: 100%; padding: 0.5rem; text-align: center;">
+                    <img src="/assets/images/design-5.jpg" alt="Premium Design" loading="lazy">
+                    <div style="position: absolute; bottom: 0; background: rgba(0,0,0,0.7); color: white; width: 100%; padding: 0.5rem; text-align: center;">
                         Premium</div>
                 </div>
             </div>
@@ -189,17 +233,22 @@
                     <p>Your destination for premium custom tailoring in Tamil Nadu. We bring your dream designs to life.
                     </p>
                     <div class="social-links" style="margin-top: 1rem;">
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/selvicouturehouse" target="_blank" class="social-link"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/selvicouturehouse" target="_blank" class="social-link"><i
+                                class="fab fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/@selvicouturehouse" target="_blank" class="social-link"><i
+                                class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
                     <h3>Contact Us</h3>
                     <div class="map-container" style="margin-bottom: 1rem; border-radius: 4px; overflow: hidden;">
                         <iframe
-                            src="https://maps.google.com/maps?q=9/732,%20Sri%20Nagar,%20Thalaiyuthu,%20Shankar%20Nagar,%20Tirunelveli,%20TamilNadu%20627-357&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                            width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy">
+                            data-src="https://maps.google.com/maps?q=9/732,%20Sri%20Nagar,%20Thalaiyuthu,%20Shankar%20Nagar,%20Tirunelveli,%20TamilNadu%20627-357&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                            width="100%" height="150" style="border:0;background:#eee;" allowfullscreen=""
+                            loading="lazy"
+                            onload="if(this.dataset.src){this.src=this.dataset.src;delete this.dataset.src}">
                         </iframe>
                     </div>
                     <p><i class="fas fa-map-marker-alt"></i> 9/732, Sri Nagar, Thalaiyuthu, Shankar Nagar, Tirunelveli,
@@ -214,7 +263,9 @@
                     <div
                         style="margin-top: 1rem; background: white; padding: 0.5rem; display: inline-block; border-radius: 4px;">
                         <p style="color: black; font-weight: bold; margin-bottom: 5px;">Scan to Pay</p>
-                        <i class="fas fa-qrcode" style="font-size: 3rem; color: black;"></i>
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=upi://pay?pa=selvicouture@oksbi%26pn=SelviCouture%26cu=INR"
+                            alt="UPI QR Code" width="100" height="100" loading="lazy" style="display:block;">
+                        <p style="color:#555;font-size:0.75rem;margin-top:4px;">selvicouture@oksbi</p>
                     </div>
                 </div>
             </div>
@@ -273,6 +324,16 @@
     </div>
 
     <script type="module" src="main.js"></script>
+    <script>
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('[PWA] Service Worker registered:', reg.scope))
+                    .catch(err => console.log('[PWA] SW registration failed:', err));
+            });
+        }
+    </script>
 </body>
 
 </html>
