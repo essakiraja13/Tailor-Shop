@@ -1,9 +1,11 @@
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import viteCompression from 'vite-plugin-compression';
 
 export default defineConfig({
     plugins: [
+        react(),
         ViteImageOptimizer({
             png: { quality: 80 },
             jpeg: { quality: 80 },
@@ -24,19 +26,5 @@ export default defineConfig({
     },
     build: {
         cssCodeSplit: true,
-        rollupOptions: {
-            input: {
-                main: 'index.html',
-                about: 'about.html',
-                admin: 'admin.html',
-                collections: 'collections.html',
-                contact: 'contact.html',
-                gallery: 'gallery.html',
-                measurement: 'measurement-guide.html',
-                pricing: 'pricing.html',
-                services: 'services.html',
-                track: 'track.html'
-            }
-        }
     },
 });
